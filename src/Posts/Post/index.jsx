@@ -1,10 +1,10 @@
 import React from 'react'
-import './Post.css'
+import styles from './styles.module.css'
 
 function Post({ imageUrl, imageAlt, children, author }) {
-    return <div className="Post">
+    return <div className={styles.Post}>
         <img src={imageUrl} alt={imageAlt} />
-        <p className="description">{children}</p>
+        <p className={styles.description}>{children}</p>
         <div>
             <span>
                 <small>Author: </small>

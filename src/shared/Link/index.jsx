@@ -1,8 +1,8 @@
 import React from 'react'
-import './Link.css'
+import styles from './styles.module.css'
 
 function Link({ children, url }) {
-    return <li className="listItem">
+    return <li className={styles.listItem}>
         <a href={url}>{children}</a>
     </li>
 }

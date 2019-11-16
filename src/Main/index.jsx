@@ -1,8 +1,8 @@
 import React from 'react'
-import './Main.css'
+import styles from './styles.module.css'
 
 function Main({ children, title }) {
-    return <main className="Main">
+    return <main className={styles.Main}>
         <h1>{title}</h1>
         {children}
     </main>

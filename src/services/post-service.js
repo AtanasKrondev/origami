@@ -1,6 +1,6 @@
 const postService = {
     load: function (id) {
-        return fetch(`https://jsonplaceholder.typicode.com/posts${id ? `/${id}` : ''}`)
+        return fetch('http://localhost:9999/api/origami/')
             .then((res) => res.json());
     }
 };
