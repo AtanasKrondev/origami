@@ -7,7 +7,7 @@ function Footer({ disclaimer }) {
     return <footer className={styles.Footer}>
         <ul>
             {links}
-            <Link url="#">
+            <Link to="/">
                 <img src="blue-origami-bird-flipped.png" alt="footer-logo" />
             </Link>
         </ul>

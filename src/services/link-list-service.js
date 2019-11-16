@@ -1,8 +1,14 @@
 import React from 'react'
 import Link from '../shared/Link'
 
-const links = Array(11).fill(null).map((link, index) =>
-    <Link key={index} url="#">Go to {index + 1}</Link>
-)
+const links = [
+    { to: "/create-posts", ref: "Post" },
+    { to: "/profile", ref: "Profile" },
+    { to: "/login", ref: "Login" },
+    { to: "/register", ref: "Register" },
+]
+    .map((link, index) =>
+        <Link key={index} to={link.to}>{link.ref}</ Link>
+    )
 
 export default links;
