@@ -7,10 +7,19 @@ import Aside from '../Aside'
 import Main from '../Main'
 import Posts from '../publications/Posts'
 import CreatePost from '../publications/CreatePost'
-import Profile from '../Profile'
+// import Detail from '../publications/Detail'
+// import Profile from '../Profile'
 import Login from '../Login'
 import Register from '../Register'
 import Loader from './Loader'
+import NotFound from '../NotFound'
+const Profile = React.lazy(() => import('../Profile'))
+
+function render(title, Cmp) {
+  return function () {
+    return <Main title={title}><Cmp /></Main>
+  }
+}
 
 function App() {
   return (
@@ -20,19 +29,23 @@ function App() {
         <Navigation />
         <div className={styles.Container}>
           <Aside />
-          <Main title="Origamis">
-            <Switch>
-              <Route path="/" exact component={Posts} />
-              <Route path="/create-posts" component={CreatePost} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </Main>
+          <Switch>
+            <Route path="/" exact render={render('Origamis', Posts)} />
+            {/* <Route path="/:id" exact render={render('Post', Detail)} /> */}
+            <Route path="/create-posts" render={render('Share your origami', CreatePost)} />
+            <Route path="/profile">
+              <React.Suspense fallback={<Loader isLoading={true} />}>
+                <Profile />
+              </React.Suspense>
+            </Route>
+            <Route path="/login" render={render('Login', Login)} />
+            <Route path="/register" render={render('Register', Register)} />
+            <Route render={render('Page Not Found!', NotFound)} />
+          </Switch>
         </div>
         <Footer disclaimer="Software Uniersity 2019" />
       </div>
-    </Router>
+    </Router >
   );
 }
 

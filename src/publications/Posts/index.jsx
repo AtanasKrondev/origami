@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.module.css'
 import Post from './Post'
 import postService from '../../services/post-service'
@@ -9,7 +10,7 @@ class Posts extends React.Component {
     };
 
     componentDidMount() {
-        postService.load()
+        postService.load(null, this.props.limit)
             .then(posts => this.setState({ posts }));
     }
     render() {
@@ -21,8 +22,13 @@ class Posts extends React.Component {
                 </Post>
                 )
             }
-        </div > : <div>Loading...</div>
+        </div > : <img className={styles.loader} src="loading.gif"
+            alt="Loading..." height="300" width="300" />
     }
+}
+
+Posts.propTypes = {
+    limit: PropTypes.number
 }
 
 export default Posts;
