@@ -22,8 +22,8 @@ class Posts extends React.Component {
                 </Post>
                 )
             }
-        </div > : <img className={styles.loader} src="loading.gif"
-            alt="Loading..." height="300" width="300" />
+        </div > : <img src="loading.gif"
+            alt="Loading..." height="150" width="150" />
     }
 }
 

@@ -10,12 +10,17 @@ export default class Detail extends React.Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         postService.load(id).then(post => {
-            this.setState({ post })
+            this.setState({ post });
         });
     }
 
-    render(){
-        const {post} = this.state;
-        return <Post description={post.description} author={post.user} />
+    render() {
+        const { post } = this.state;
+        return post && <Post description={post.description} author={post.author.username} />
+        // return (
+        //     <Post key={post._id} imageUrl="blue-origami-bird.png" imageAlt="Origami" author={post.user}>
+        //         {post.description}
+        //     </Post>
+        // )
     }
 }
