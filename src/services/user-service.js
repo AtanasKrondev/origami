@@ -5,7 +5,10 @@ const userService = {
             method: 'POST',
             headers: { 'Content-type': 'application/json' }
         })
-            .then((res) => res.text());
+            .then((res) => {
+                console.log(res)
+                res.text()
+            });
     },
 
     login: function (data) {
@@ -15,7 +18,7 @@ const userService = {
             headers: { 'Content-type': 'application/json' },
             credentials: 'include'
         })
-            .then((res) => res.text());
+            .then((res) => res.text().then(text =>res.status===200? text: Promise.reject(text)));
     },
 
     logout: function (data) {

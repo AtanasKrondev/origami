@@ -37,18 +37,18 @@ class Register extends Component {
                     <div className={styles["form-control"]}>
                         <label htmlFor="username">Username</label>
                         <input type="text" id="username" name="username" onChange={this.usernameOnChangeHandler} />
-                        {usernameError && <div className={styles["error"]}>{usernameError}</div>}
+                        {usernameError && <p className={styles["error"]}>{usernameError}</p>}
                     </div>
                     <div className={styles["form-control"]}>
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" name="password" onChange={this.passwordOnChangeHandler} />
-                        {passwordError && <div className={styles["error"]}>{passwordError}</div>}
+                        {passwordError && <p className={styles["error"]}>{passwordError}</p>}
                     </div>
                     <div className={styles["form-control"]}>
                         <label htmlFor="repassword">Re-password</label>
                         <input type="password" id="repassword" name="repassword"
                             onChange={this.repasswordOnChangeHandler} />
-                        {repasswordError && <div className={styles["error"]}>{repasswordError}</div>}
+                        {repasswordError && <p className={styles["error"]}>{repasswordError}</p>}
                     </div>
                     <div className={styles["form-control"]}
                     ><button type="button" onClick={this.submitHandler}>Register</button>

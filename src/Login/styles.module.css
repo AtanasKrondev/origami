@@ -30,3 +30,7 @@ form button {
     width: auto;
     padding: 2%;
 }
+
+.error {
+    color: red;
+}

@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   login = (history, data) => {
-    userService.login(data).then(() => {
+    return userService.login(data).then(() => {
       this.setState({ isLogged: true });
       history.push('/');
     });
@@ -71,23 +71,11 @@ class App extends React.Component {
               <Route path="/posts" render={render('Publications', Posts, { isLogged })} />
               <Route path="/post/:id" render={render('Post', Detail, { isLogged })} />
               <Route path="/logout" render={render('Logout', Logout, { isLogged, logout: this.logout })} />
-              <Route path="/create-posts" render={render('Create Post', CreatePost, { isLogged })} />
-              <Route path="/profile" render={render('Profile', Profile, { isLogged })} />
-              {/* <Route path="/create-posts">
-                <Main title="Create Post"><CreatePost /></Main>
-              </Route>
-              <Route path="/profile">
-                <Main title="Profile">
-                  <React.Suspense fallback={<Loader isLoading={true} />}>
-                    <Profile></Profile>
-                  </React.Suspense>
-                </Main>
-              </Route> */}
+              {isLogged && <Route path="/create-posts" exact render={render('Create Post', CreatePost, { isLogged })} />}
+              {isLogged && <Route path="/profile" render={render('Profile', Profile, { isLogged })} />}
               <Route path="/login" render={render('Login', Login, { isLogged, login: this.login })} />
               <Route path="/register" render={render('Register', Register, { isLogged })} />
-              <Route path="*">
-                <Main title="Not Found"><NotFound /></Main>
-              </Route>
+              <Route path="*" render={render('Not Found', NotFound)} />
             </Switch>
           </div>
           <Footer isLogged={isLogged} />

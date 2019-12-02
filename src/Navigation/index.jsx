@@ -5,7 +5,6 @@ import Link from '../shared/Link'
 
 
 function Navigation({ isLogged }) {
-    console.log(isLogged)
     return <nav className={styles.Navigation}>
         <ul>
             <Link to="/">
